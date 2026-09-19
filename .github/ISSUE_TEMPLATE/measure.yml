@@ -1,0 +1,12 @@
+name: Measurement
+description: A number we need before fixing a design parameter
+labels: [measure]
+body:
+  - type: textarea
+    attributes: { label: The question }
+    validations: { required: true }
+  - type: textarea
+    attributes: { label: Method, description: Command, inputs, machine, how many runs. }
+    validations: { required: true }
+  - type: textarea
+    attributes: { label: Decision it feeds }

@@ -1,0 +1,12 @@
+name: Feature
+description: A capability to build
+labels: [feature]
+body:
+  - type: textarea
+    attributes: { label: What and why }
+    validations: { required: true }
+  - type: textarea
+    attributes: { label: Done when, description: Observable outcome. Include the number to measure, if any. }
+    validations: { required: true }
+  - type: input
+    attributes: { label: Architecture section, placeholder: "§5 Data" }
