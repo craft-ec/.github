@@ -28,6 +28,12 @@ One rule: **nothing lands on `main` without an issue and a pull request.**
      says to fetch, a continuation it hands back, "these bytes are the value".
      Returned data can be right while an assertion is wrong, and nothing
      notices — run a mutant on each acceptance/assertion path before merging
+   - **every public door to the same check gets the same tests.** When one check
+     is reachable through several entry points (bytes and decoded, a wrapper with
+     its own pre-gate, native and wasm), honest inputs and the hostile list run
+     through each of them and the answers are asserted equal. A fix verified
+     through the inner function proves the inner function: the outer door — the
+     one callers use — may refuse or accept for a reason of its own
    - design check: matches `ARCHITECTURE.md`, or the PR updates it
    - anything measured: the number, the command, the machine
 6. **Squash-merge**, delete the branch. `main` stays linear and always green.
