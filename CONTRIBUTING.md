@@ -11,6 +11,8 @@ One rule: **nothing lands on `main` without an issue and a pull request.**
 3. **Commit** in small, imperative, self-explaining commits. No attribution
    trailers.
 4. **Pull request** titled like the change, with `Closes #<issue>` in the body.
+   Give it the **same labels and milestone as the issue** — GitHub does not
+   copy them, and an unlabelled PR cannot be found by type, track or phase.
    One logical change per PR. If it spans repos, open one PR per repo and link
    them; merge in dependency order.
 5. **Gates before merge** — all stated in the PR, with output where there is any:
