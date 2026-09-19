@@ -36,7 +36,13 @@ One rule: **nothing lands on `main` without an issue and a pull request.**
      one callers use — may refuse or accept for a reason of its own
    - design check: matches `ARCHITECTURE.md`, or the PR updates it
    - anything measured: the number, the command, the machine
-6. **Squash-merge**, delete the branch. `main` stays linear and always green.
+6. **Gate the merged tree.** A gate certifies the tree it ran on, and for a merge
+   that tree does not exist until the merge does: two green PRs can break `main`
+   together with no git conflict (one adds a call to what the other renamed). If
+   `main` has moved since the branch was cut, run the gates on the branch merged
+   with `main` before merging, and build `main` again afterwards. "Merges
+   cleanly" is not a gate.
+7. **Squash-merge**, delete the branch. `main` stays linear and always green.
 
 ## Labels
 
