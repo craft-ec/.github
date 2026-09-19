@@ -16,6 +16,9 @@ One rule: **nothing lands on `main` without an issue and a pull request.**
 5. **Gates before merge** — all stated in the PR, with output where there is any:
    - `cargo fmt --check`, `cargo clippy -D warnings`, `cargo test`
    - contracts: reproducible wasm build, wasm size and hash recorded
+   - formats (anything that fixes bytes or hashes): frozen vectors pass on native
+     **and** on wasm32 (`./check-wasm.sh` where the repo has one); a check that
+     cannot run — missing tool, missing target — fails, it never skips
    - a test that would fail if the thing were broken (negative control for any
      "X prevents Y" claim)
    - design check: matches `ARCHITECTURE.md`, or the PR updates it
