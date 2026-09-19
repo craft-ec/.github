@@ -23,6 +23,11 @@ One rule: **nothing lands on `main` without an issue and a pull request.**
      cannot run — missing tool, missing target — fails, it never skips
    - a test that would fail if the thing were broken (negative control for any
      "X prevents Y" claim)
+   - the same for what the code **asserts to its caller**, not only what it
+     returns: a proof or evidence it accepts from a third party, the blocks it
+     says to fetch, a continuation it hands back, "these bytes are the value".
+     Returned data can be right while an assertion is wrong, and nothing
+     notices — run a mutant on each acceptance/assertion path before merging
    - design check: matches `ARCHITECTURE.md`, or the PR updates it
    - anything measured: the number, the command, the machine
 6. **Squash-merge**, delete the branch. `main` stays linear and always green.
