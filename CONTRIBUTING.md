@@ -50,7 +50,7 @@ One rule: **nothing lands on `main` without an issue and a pull request.**
 |---|---|
 | type | `feature` · `bug` · `measure` · `docs` · `chore` |
 | track | `substrate` · `sdk` · `builder` |
-| phase | `phase-0` … `phase-13` |
+| phase | `phase-0` … `phase-15` |
 | state | `needs-decision` (blocked on a design call) · `blocked` |
 
 ## Milestones
