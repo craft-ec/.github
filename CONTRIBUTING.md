@@ -28,6 +28,15 @@ One rule: **nothing lands on `main` without an issue and a pull request.**
      says to fetch, a continuation it hands back, "these bytes are the value".
      Returned data can be right while an assertion is wrong, and nothing
      notices — run a mutant on each acceptance/assertion path before merging
+   - **a restored mutant must rebuild.** Restoring a mutated file by moving a
+     backup back (`mv f.bak f`, `cp -p`) gives it its OLD mtime, older than the
+     mutant's build, so cargo (and any mtime-based build) keeps running the
+     MUTANT binary: a later green run can certify the mutant, and a later
+     failure looks like a real defect (sdk#235: a new test "failed" on a clean
+     tree because the engine was still the previous mutant). Restore with a
+     write that bumps the mtime (`git checkout -- f`, or `touch f` after the
+     move), and after every mutant batch run the suite green ONCE and say so —
+     that run is the only evidence the restore took
    - **every public door to the same check gets the same tests.** When one check
      is reachable through several entry points (bytes and decoded, a wrapper with
      its own pre-gate, native and wasm), honest inputs and the hostile list run
